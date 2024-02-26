@@ -1,0 +1,19 @@
+<h1>Products Inventory</h1>
+
+<ul>
+  <li *ngFor="let product of products">
+    {{ product.name }} - {{ product.quantity }} ({{ product.price }}€)
+    <button (click)="editProductClick(product)">Edit</button>
+    <button (click)="deleteProduct(product.id)">Delete</button>
+  </li>
+</ul>
+
+<h2>Add Product</h2>
+<form (ngSubmit)="addProduct()">
+  <label for="name">Name:</label>
+  <input type="text" id="name" [(ngModel)]="newProduct.name" required>
+  <button type="submit">Add Product</button>
+</form>
+
+<h2>Edit Product</h2>
+<form *ngIf="editProduct" (ngSubmit)="saveProduct()">
